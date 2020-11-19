@@ -27,4 +27,8 @@ public class ServicePrevu {
     public int getVolumeTP(){
         return volumeTP;
     }
+    
+    public UE getUE(){
+        return u;
+    }
 }

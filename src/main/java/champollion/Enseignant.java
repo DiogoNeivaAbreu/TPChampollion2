@@ -2,9 +2,13 @@ package champollion;
 
 import java.util.*;
 
+
 public class Enseignant extends Personne {
     
-    private List<ServicePrevu> myEnseignements = new LinkedList<>();
+    
+    private List<ServicePrevu> prevu = new ArrayList<>();
+    private List<Intervention> interv = new ArrayList<>();
+    
 
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
 
@@ -22,7 +26,13 @@ public class Enseignant extends Personne {
      */
     public int heuresPrevues() {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        float equivalentTD = 0;
+        for (ServicePrevu s : prevu){
+            equivalentTD += 1.5*s.getVolumeCM() ;
+            equivalentTD += s.getVolumeTD();
+            equivalentTD += 0.75*s.getVolumeTP();
+        }
+        return Math.round(equivalentTD);
     }
 
     /**
@@ -36,11 +46,26 @@ public class Enseignant extends Personne {
      */
     public int heuresPrevuesPourUE(UE ue) {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        int equivalentTD = 0;
+        for (ServicePrevu s : prevu){
+            if (s.getUE().equals(ue)){
+                equivalentTD += 1.5* s.getVolumeCM();
+                equivalentTD += s.getVolumeTD();
+                equivalentTD += 0.75* s.getVolumeTP();
+            }
+        }
+            
+        return Math.round(equivalentTD);
     }
     
     public int heuresPlanifiees(){
-        return 0;
+        int equivalentTD = 0;
+        for (Intervention i : interv){
+            if (i.getAnnulee()==false){
+                equivalentTD += heuresPrevues();
+            }
+        }
+        return equivalentTD;
         
     }
 
@@ -54,12 +79,15 @@ public class Enseignant extends Personne {
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-        ServivePrevu s = new Serviceprevu(this, ue, volumeCM, volumeTD, volumeTP);
+        ServicePrevu s = new ServicePrevu(this, ue, volumeCM, volumeTD, volumeTP);
+        prevu.add(s);
         
     }
     
+   
     public void ajouteIntervention(Intervention e){
+        interv.add(e);
+        
         
     }
     
