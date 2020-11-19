@@ -15,11 +15,14 @@ public class Intervention {
     
     private final Date debut;
     private final int duree;
-    private final boolean annulee=false;
+    private final boolean annulee;
+    private final TypeIntervention type;
     
-    public Intervention(Salle s, UE u, Enseignant e, Date debut, int duree){
-        this.debut = new Date();
+    public Intervention(Salle s, UE u, Enseignant e, Date debut, int duree, boolean annulee, TypeIntervention type){
+        this.debut = debut;
         this.duree = duree;
+        this.annulee = annulee;
+        this.type = type;
     }
     
     

@@ -92,6 +92,9 @@ public class Enseignant extends Personne {
     }
     
     public boolean enSousService(){
+        if (heuresPlanifiees()< 192){
+            return true;
+        }
         return false;
         
     }
