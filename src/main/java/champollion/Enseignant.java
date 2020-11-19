@@ -1,6 +1,10 @@
 package champollion;
 
+import java.util.*;
+
 public class Enseignant extends Personne {
+    
+    private List<ServicePrevu> myEnseignements = new LinkedList<>();
 
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
 
@@ -34,6 +38,11 @@ public class Enseignant extends Personne {
         // TODO: Implémenter cette méthode
         throw new UnsupportedOperationException("Pas encore implémenté");
     }
+    
+    public int heuresPlanifiees(){
+        return 0;
+        
+    }
 
     /**
      * Ajoute un enseignement au service prévu pour cet enseignant
@@ -46,6 +55,17 @@ public class Enseignant extends Personne {
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
         // TODO: Implémenter cette méthode
         throw new UnsupportedOperationException("Pas encore implémenté");
+        ServivePrevu s = new Serviceprevu(this, ue, volumeCM, volumeTD, volumeTP);
+        
+    }
+    
+    public void ajouteIntervention(Intervention e){
+        
+    }
+    
+    public boolean enSousService(){
+        return false;
+        
     }
 
 }
